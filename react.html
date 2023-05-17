@@ -124,16 +124,12 @@
 
         
         function PostItem(prop){
-           
+           console.log(prop);
             return(
                 <div className = "post-Item">
                     
                     <img src={prop.image} alt=""/>
-                    <h2 className="post-title"
-                    onClick = {()=>console.log(prop.title)}
-                    >
-                    {prop.title}
-                    </h2>
+                    <h2 className="post-title">{prop.title}</h2>
                     <p class="post-description">{prop.discription}</p>
                     </div>
             )
@@ -141,18 +137,22 @@
 
 
         function App(){
+            const handleClick = ()=> {
+
+            }
             
             return(
                 <div id="wrapper">
-                 
+                   
                 {
                     courses.map((course)=>(
                         <PostItem 
                         title={course.title}
                         image={course.image_url}
                         discription={course.description}
+                        onClick={handleClick}
                         />)
-                        
+
                     )
                 }
                    
@@ -160,9 +160,35 @@
             )
         }
 
+        function Input({label, ...inputProps}){
+            return(
+                <div>
+                    <label>{label}</label>
+                    <input {...inputProps}/>
+                </div>
+            )
+        }
+
+        function Form(){
+            return (
+                <div>
+                    <Input
+                    label="full name"
+                    type="text"
+                    placeholder="full name"
+                    title="day la input"
+                    onFocus={()=>{
+                        console.log(Math.random());
+                    }}
+                    />
+                </div>
+            )
+        }
+
         const root = ReactDOM.createRoot(document.getElementById('root'))
        
-        root.render(<App/>)
+        //root.render(<App/>)
+        root.render(<Form/>)
 
 
     </script>
