@@ -124,12 +124,16 @@
 
         
         function PostItem(prop){
-           console.log(prop);
+           
             return(
                 <div className = "post-Item">
                     
                     <img src={prop.image} alt=""/>
-                    <h2 className="post-title">{prop.title}</h2>
+                    <h2 className="post-title"
+                    onClick = {()=>console.log(prop.title)}
+                    >
+                    {prop.title}
+                    </h2>
                     <p class="post-description">{prop.discription}</p>
                     </div>
             )
@@ -140,14 +144,15 @@
             
             return(
                 <div id="wrapper">
-                  { [<PostItem title="f8"/>,
-                  <PostItem title="f9"/>
-                ]}
+                 
                 {
-                    courses.map((course)=>(<PostItem title={course.title}/>)
-                       
+                    courses.map((course)=>(
+                        <PostItem 
+                        title={course.title}
+                        image={course.image_url}
+                        discription={course.description}
+                        />)
                         
-                       
                     )
                 }
                    
